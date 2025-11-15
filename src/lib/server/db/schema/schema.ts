@@ -8,6 +8,9 @@ export const videoInformations = sqliteTable("informations", {
 	subtitle: text("subtitle").notNull(),
 	after: integer("after").notNull(),
 	notes: text("notes"),
+	status: text("status", {
+		enum: ["terminée", "en cours", "à faire"],
+	}).default("à faire"),
 	created_at: integer("created_at", { mode: "timestamp" }).default(
 		sql`(CURRENT_TIMESTAMP)`,
 	),

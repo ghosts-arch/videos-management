@@ -1,11 +1,15 @@
 import { defineConfig } from "drizzle-kit";
 
-if (!process.env.DATABASE_URL) throw new Error("DATABASE_URL is not set");
+if (!process.env.TURSO_DATABASE_URL)
+	throw new Error("TURSO_DATABASE_URL is not set");
+if (!process.env.TURSO_AUTH_TOKEN)
+	throw new Error("TURSO_DATABASE_URL is not set");
 
 export default defineConfig({
 	schema: "./src/lib/server/db/schema",
-	dialect: "sqlite",
-	dbCredentials: { url: process.env.DATABASE_URL },
-	verbose: true,
-	strict: true,
+	dialect: "turso",
+	dbCredentials: {
+		url: process.env.TURSO_DATABASE_URL,
+		authToken: process.env.TURSO_AUTH_TOKEN,
+	},
 });

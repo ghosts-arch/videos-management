@@ -1,26 +1,7 @@
+import { error, redirect } from "@sveltejs/kit";
+import z from "zod";
 import { form, getRequestEvent, query } from "$app/server";
 import { auth } from "$lib/auth";
-import { redirect } from "@sveltejs/kit";
-import z from "zod";
-
-export const getSession = query(async () => {
-	return await auth.api.getSession({
-		headers: getRequestEvent().request.headers,
-	});
-});
-
-async function requireAuth() {
-	const session = await getSession();
-	console.log(session);
-	if (!session?.user) {
-		redirect(307, "/auth/login");
-	}
-	return session?.user;
-}
-
-export const getUser = query(async () => {
-	return await requireAuth();
-});
 
 export const login = form(
 	z.object({
@@ -33,7 +14,15 @@ export const login = form(
 			asResponse: true,
 		});
 		if (response.ok) {
-			redirect(303, "/");
+			redirect(303, "/dashboard");
 		}
+
+		error(401, "test");
 	},
 );
+
+export const getSession = query(() => {
+	return auth.api.getSession({
+		headers: getRequestEvent().request.headers,
+	});
+});
