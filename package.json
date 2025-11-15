@@ -37,6 +37,7 @@
 	},
 	"dependencies": {
 		"@libsql/client": "^0.15.15",
+		"@sveltejs/adapter-vercel": "^6.1.1",
 		"better-auth": "^1.3.34",
 		"dotenv": "^17.2.3",
 		"zod": "^4.1.12"
