@@ -16,8 +16,6 @@ export const login = form(
 		if (response.ok) {
 			redirect(303, "/dashboard");
 		}
-
-		error(401, "test");
 	},
 );
 
