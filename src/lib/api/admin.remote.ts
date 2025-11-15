@@ -4,13 +4,6 @@ import { form, getRequestEvent, query } from "$app/server";
 import { auth } from "$lib/auth";
 import { getSession } from "./auth.remote";
 
-async function requireAuth() {
-	const session = await getSession();
-	if (!session?.user) {
-		error(401, "Non autorisé");
-	}
-}
-
 async function isAdmin() {
 	const session = await getSession();
 	if (session?.user.role !== "admin") {
@@ -19,7 +12,7 @@ async function isAdmin() {
 }
 
 export const getUsers = query(async () => {
-	await requireAuth();
+	// await requireAuth();
 	await isAdmin();
 	const users = await auth.api.listUsers({
 		query: {},
@@ -36,7 +29,7 @@ export const createUser = form(
 		password: z.string(),
 	}),
 	async ({ email, name, password }) => {
-		await requireAuth();
+		// await requireAuth();
 		await isAdmin();
 		await auth.api.createUser({
 			body: { email, name, password, role: "user" },

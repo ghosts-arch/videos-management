@@ -1,4 +1,4 @@
-import { error, redirect } from "@sveltejs/kit";
+import { redirect } from "@sveltejs/kit";
 import z from "zod";
 import { form, getRequestEvent, query } from "$app/server";
 import { auth } from "$lib/auth";

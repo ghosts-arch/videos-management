@@ -11,7 +11,7 @@ async function requireAuth() {
 }
 
 export const getVideosInformations = query(async () => {
-	await requireAuth();
+	// await requireAuth();
 	const videoInformations = await db
 		.select()
 		.from(schema.videoInformations)
@@ -25,7 +25,7 @@ export const getVideoInformations = query(
 		z.transform((id) => Number(id)),
 	),
 	async (id: number) => {
-		await requireAuth();
+		// await requireAuth();
 		const [videoInformations] = await db
 			.select()
 			.from(schema.videoInformations)
@@ -51,7 +51,7 @@ export const updateVideoInformations = form(
 		notes: z.string(),
 	}),
 	async ({ id, live, title, subtitle, after, notes }) => {
-		await requireAuth();
+		// await requireAuth();
 		await db
 			.update(schema.videoInformations)
 			.set({ live, title, subtitle, after, notes })
@@ -88,7 +88,7 @@ export const updateStatus = command(
 		newStatus: z.literal(["à faire", "en cours", "terminée"]),
 	}),
 	async ({ id, newStatus }) => {
-		await requireAuth();
+		// await requireAuth();
 		await db
 			.update(schema.videoInformations)
 			.set({ status: newStatus })

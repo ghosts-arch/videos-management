@@ -1,16 +1,14 @@
 <script lang="ts">
-    import {
-        getVideoInformations,
-        updateStatus,
-        updateVideoInformations,
-    } from "$lib/api/video.remote";
-    import { signOut, useSession } from "$lib/auth-client";
+import {
+	getVideoInformations,
+	updateStatus,
+	updateVideoInformations,
+} from "$lib/api/video.remote";
+import { signOut, useSession } from "$lib/auth-client";
 
-    const session = useSession();
-    const { params } = $props();
-    const videoInformations = $derived(
-        await getVideoInformations(params.video_id),
-    );
+const session = useSession();
+const { params } = $props();
+const videoInformations = $derived(await getVideoInformations(params.video_id));
 </script>
 
 <div class="navbar bg-base-100 shadow-sm">

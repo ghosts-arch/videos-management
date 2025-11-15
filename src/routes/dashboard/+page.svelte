@@ -1,12 +1,12 @@
 <script lang="ts">
-    import { getSession } from "$lib/api/auth.remote";
-    import {
-        getVideoInformations,
-        getVideosInformations,
-    } from "$lib/api/video.remote";
-    import { signOut } from "$lib/auth-client";
+import { getSession } from "$lib/api/auth.remote";
+import {
+	getVideoInformations,
+	getVideosInformations,
+} from "$lib/api/video.remote";
+import { signOut } from "$lib/auth-client";
 
-    const session = await getSession();
+const session = await getSession();
 </script>
 
 <div class="navbar bg-base-100 shadow-sm">

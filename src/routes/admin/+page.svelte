@@ -1,10 +1,10 @@
 <script lang="ts">
-    import { createUser, getUsers } from "$lib/api/admin.remote";
+import { createUser, getUsers } from "$lib/api/admin.remote";
 
-    import { getSession } from "$lib/api/auth.remote";
-    import { signOut } from "$lib/auth-client";
+import { getSession } from "$lib/api/auth.remote";
+import { signOut } from "$lib/auth-client";
 
-    const session = await getSession();
+const session = await getSession();
 </script>
 
 <div class="navbar bg-base-100 shadow-sm">
